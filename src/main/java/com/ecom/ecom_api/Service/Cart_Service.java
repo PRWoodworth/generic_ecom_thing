@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.ecom.ecom_api.Objects.Models.Cart;
 import com.ecom.ecom_api.Objects.Models.Cart_Item;
-import com.ecom.ecom_api.Objects.Models.User;
 import com.ecom.ecom_api.Repository.Cart_Repository;
 
 @Service
@@ -26,7 +25,20 @@ public class Cart_Service {
         return ResponseEntity.ok("Item added to cart successfully.");
     }
 
-    public ResponseEntity<String> remove_Item() {
+    public ResponseEntity<String> remove_Item(long user_id, Cart_Item item) {
+        Cart working_cart = (Cart) get_Cart(user_id).getBody();
+        working_cart.getCart_items().iterator();
+        for (Cart_Item target_item:   working_cart.getCart_items()) {
+            if(target_item.getProduct_id() == item.getProduct_id()) {
+                if(target_item.getQuantity() < 1){
+                    target_item.setQuantity(target_item.getQuantity() - 1);
+                } else {
+                    working_cart.getCart_items().remove(target_item);
+                }
+                cart_Repository.save(working_cart);
+                return ResponseEntity.ok("Item removed from cart successfully.");
+            }
+        }
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'remove_Item'");
     }

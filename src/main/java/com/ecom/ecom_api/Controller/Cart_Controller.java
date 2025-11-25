@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecom.ecom_api.Objects.Models.Cart;
 import com.ecom.ecom_api.Objects.Models.Cart_Item;
-import com.ecom.ecom_api.Objects.Models.User;
 import com.ecom.ecom_api.Service.Cart_Service;
 
 @RestController
