@@ -33,5 +33,5 @@ public class Cart {
     private int total_items = 0;
 
     @OneToOne
-    private User user;
+    private Long user_id;
 }

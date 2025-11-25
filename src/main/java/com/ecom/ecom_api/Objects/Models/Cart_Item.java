@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Cart_Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long product_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
