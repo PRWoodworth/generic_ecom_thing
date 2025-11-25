@@ -28,8 +28,8 @@ public class Cart_Controller {
     }
 
     @PostMapping("/remove_item")
-    public ResponseEntity<String> remove_Item() {
-        return cart_Service.remove_Item();
+    public ResponseEntity<String> remove_Item(long user_id, Cart_Item item) {
+        return cart_Service.remove_Item(user_id, item);
     }
 
     @PostMapping("/new_cart")
